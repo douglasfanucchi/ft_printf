@@ -14,15 +14,15 @@
 
 static char	*formatter(void *str)
 {
-	return str;
+	return (str);
 }
 
 static void	*get_arg(va_list ap)
 {
-	return va_arg(ap, char *);
+	return (va_arg(ap, char *));
 }
 
-t_data_format	*get_str_format()
+t_data_format	*get_str_format(void)
 {
 	t_data_format	*data_format;
 

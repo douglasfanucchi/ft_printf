@@ -14,7 +14,7 @@
 
 static char	*formatter(void *s)
 {
-	return s;
+	return (s);
 }
 
 static void	*get_arg(va_list ap)
@@ -26,7 +26,7 @@ static void	*get_arg(va_list ap)
 	return (result);
 }
 
-t_data_format	*get_char_format()
+t_data_format	*get_char_format(void)
 {
 	t_data_format	*data_format;
 
