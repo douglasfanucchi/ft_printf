@@ -44,7 +44,6 @@ static char	*convert(int n, char *digits)
 	char	*result;
 
 	result = convert_recursive((unsigned int) n, digits, 0);
-	if (result)
 	return (result);
 }
 
