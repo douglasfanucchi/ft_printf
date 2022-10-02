@@ -24,6 +24,15 @@ struct	s_data_format {
 
 typedef struct s_data_format	t_data_format;
 
+struct	s_hex_base_converter {
+	char	*hex_upper_digits;
+	char	*hex_lower_digits;
+	int		decimal_nbr;
+	char	*(*converter)(int);
+};
+
+typedef struct s_hex_base_converter	t_hex_base_converter;
+
 t_data_format	*get_char_format();
 t_data_format	*get_str_format();
 
