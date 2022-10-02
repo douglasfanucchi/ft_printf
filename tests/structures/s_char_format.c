@@ -22,11 +22,7 @@ MU_TEST(test_char_formatter) {
 	free(data_format);
 }
 
-int	main()
-{
+MU_TEST_SUITE(tests_s_char_format) {
 	MU_RUN_TEST(test_get_char_format);
 	MU_RUN_TEST(test_char_formatter);
-	MU_REPORT();
-
-	return (0);
 }
