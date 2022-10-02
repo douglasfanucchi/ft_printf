@@ -1,39 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_char_format.c                                  :+:      :+:    :+:   */
+/*   get_str_format.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dfanucch <dfanucch@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/02 01:52:07 by dfanucch          #+#    #+#             */
-/*   Updated: 2022/10/02 01:52:08 by dfanucch         ###   ########.fr       */
+/*   Created: 2022/10/02 02:10:54 by dfanucch          #+#    #+#             */
+/*   Updated: 2022/10/02 02:10:54 by dfanucch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf.h>
 
-static char	*formatter(void *s)
+static char	*formatter(void *str)
 {
-	return s;
+	return "";
 }
 
 static void	*get_arg(va_list ap)
 {
-	char	*result;
-
-	result = malloc(sizeof(char));
-	*result = (char) va_arg(ap, int);
-	return (result);
+	return va_arg(ap, char *);
 }
 
-t_data_format	*get_char_format()
+t_data_format	*get_str_format()
 {
 	t_data_format	*data_format;
 
 	data_format = (t_data_format *)malloc(sizeof(t_data_format));
 	if (data_format)
 	{
-		data_format->id = "%c";
+		data_format->id = "%s";
 		data_format->formatter = formatter;
 		data_format->get_arg = get_arg;
 	}
