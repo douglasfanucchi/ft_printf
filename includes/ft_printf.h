@@ -27,7 +27,6 @@ typedef struct s_data_format	t_data_format;
 typedef struct s_hex_base_converter {
 	char	*hex_upper_digits;
 	char	*hex_lower_digits;
-	int		decimal_nbr;
 	char	*(*converter)(int);
 }	t_hex_base_converter;
 
