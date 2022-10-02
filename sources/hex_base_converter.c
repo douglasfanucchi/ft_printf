@@ -12,9 +12,40 @@
 
 #include <ft_printf.h>
 
+static char	*convert_recursive(unsigned int n, char *digits, size_t index)
+{
+	char	*hex_nbr;
+	char	tmp;
+
+	if (n == 0 && index != 0)
+		return (ft_calloc(index, sizeof(char)));
+	if (n == 0 && index == 0)
+	{
+		hex_nbr = ft_calloc(2, sizeof(char));
+		ft_strlcpy(hex_nbr, "0", 2);
+		return (hex_nbr);
+	}
+	hex_nbr = convert_recursive(n / 16, digits, index + 1);
+	if (!hex_nbr)
+		return (NULL);
+	hex_nbr[index] = digits[n % 16];
+	while (hex_nbr[index + 1])
+	{
+		tmp = hex_nbr[index];
+		hex_nbr[index] = hex_nbr[index + 1];
+		hex_nbr[index + 1] = tmp;
+		index++;
+	}
+	return (hex_nbr);
+}
+
 static char	*convert(int n, char *digits)
 {
-	return (&digits[n % 16]);
+	char	*result;
+
+	result = convert_recursive((unsigned int) n, digits, 0);
+	if (result)
+	return (result);
 }
 
 t_hex_base_converter	*get_hex_base_converter(void)
