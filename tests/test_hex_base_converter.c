@@ -7,7 +7,7 @@ MU_TEST(test_simple_convertion) {
 	converter = get_hex_base_converter();
 	mu_check(converter != NULL);
 
-	mu_check(!ft_strncmp(converter->convert(16), "10", 1));
+	mu_check(!ft_strncmp(converter->convert(16, converter->hex_lower_digits), "10", 1));
 
 	free(converter);
 }

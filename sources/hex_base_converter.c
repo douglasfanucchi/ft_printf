@@ -12,7 +12,7 @@
 
 #include <ft_printf.h>
 
-static char	*convert(int n)
+static char	*convert(int n, char *digits)
 {
 	return ("F");
 }
