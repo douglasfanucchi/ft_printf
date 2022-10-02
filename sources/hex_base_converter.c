@@ -12,10 +12,19 @@
 
 #include <ft_printf.h>
 
+static char	*convert(int n)
+{
+	return ("F");
+}
+
 t_hex_base_converter	*get_hex_base_converter(void)
 {
 	t_hex_base_converter	*converter;
 
 	converter = malloc(sizeof(t_hex_base_converter));
+	if (converter)
+	{
+		converter->convert = convert;
+	}
 	return (converter);
 }
