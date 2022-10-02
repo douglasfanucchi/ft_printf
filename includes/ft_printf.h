@@ -25,5 +25,6 @@ struct	s_data_format {
 typedef struct s_data_format	t_data_format;
 
 t_data_format	*get_char_format();
+t_data_format	*get_str_format();
 
 #endif

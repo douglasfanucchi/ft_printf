@@ -14,7 +14,7 @@
 
 static char	*formatter(void *str)
 {
-	return "";
+	return str;
 }
 
 static void	*get_arg(va_list ap)
