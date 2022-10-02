@@ -14,7 +14,7 @@
 
 static char	*convert(int n, char *digits)
 {
-	return ("F");
+	return ("5");
 }
 
 t_hex_base_converter	*get_hex_base_converter(void)
