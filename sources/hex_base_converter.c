@@ -24,6 +24,8 @@ t_hex_base_converter	*get_hex_base_converter(void)
 	converter = malloc(sizeof(t_hex_base_converter));
 	if (converter)
 	{
+		converter->hex_lower_digits = "0123456789abcdef";
+		converter->hex_upper_digits = "0123456789ABCDEF";
 		converter->convert = convert;
 	}
 	return (converter);
