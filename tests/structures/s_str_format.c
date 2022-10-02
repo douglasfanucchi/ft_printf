@@ -42,6 +42,11 @@ MU_TEST(test_str_get_arg) {
 	mu_check(*result == 0);
 	free(result);
 
+	result = function_to_test_str_get_arg(data_format, "douglas\0fanucchi");
+	mu_check(!ft_strncmp(result, "douglas", ft_strlen(result)));
+	mu_check(ft_memcmp(result, "douglas\0fanucchi", 16) < 0);
+	free(result);
+
 	free(data_format);
 }
 
