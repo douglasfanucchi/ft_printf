@@ -15,13 +15,13 @@
 static char	*convert(int n, char *digits)
 {
 	char			*result;
-	unsigned int	unsigned_n;
+	unsigned long	unsigned_n;
 	size_t			result_len;
 	size_t			i;
 
 	result_len = 1;
 	i = 0;
-	unsigned_n = (unsigned int) n;
+	unsigned_n = (unsigned long) n;
 	while (unsigned_n / 16)
 	{
 		unsigned_n /= 16;
@@ -30,7 +30,7 @@ static char	*convert(int n, char *digits)
 	result = ft_calloc(result_len + 1, sizeof(char));
 	if (result)
 	{
-		unsigned_n = (unsigned int) n;
+		unsigned_n = (unsigned long) n;
 		while (unsigned_n / 16)
 		{
 			result[result_len - 1 - i++] = digits[unsigned_n % 16];
