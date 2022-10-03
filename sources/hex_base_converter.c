@@ -12,6 +12,26 @@
 
 #include <ft_printf.h>
 
+static void	reverse_tab(char *tab)
+{
+	size_t	len;
+	size_t	start;
+	size_t	end;
+	char	tmp;
+
+	len = ft_strlen(tab);
+	start = 0;
+	end = len - 1;
+	while (end > start)
+	{
+		tmp = tab[start];
+		tab[start] = tab[end];
+		tab[end] = tmp;
+		start++;
+		end--;
+	}
+}
+
 static char	*convert_recursive(unsigned int n, char *digits, size_t index)
 {
 	char	*hex_nbr;
@@ -29,13 +49,6 @@ static char	*convert_recursive(unsigned int n, char *digits, size_t index)
 	if (!hex_nbr)
 		return (NULL);
 	hex_nbr[index] = digits[n % 16];
-	while (hex_nbr[index + 1])
-	{
-		tmp = hex_nbr[index];
-		hex_nbr[index] = hex_nbr[index + 1];
-		hex_nbr[index + 1] = tmp;
-		index++;
-	}
 	return (hex_nbr);
 }
 
@@ -44,6 +57,8 @@ static char	*convert(int n, char *digits)
 	char	*result;
 
 	result = convert_recursive((unsigned int) n, digits, 0);
+	if (result)
+		reverse_tab(result);
 	return (result);
 }
 
