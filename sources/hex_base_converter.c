@@ -12,53 +12,32 @@
 
 #include <ft_printf.h>
 
-static void	reverse_tab(char *tab)
-{
-	size_t	len;
-	size_t	start;
-	size_t	end;
-	char	tmp;
-
-	len = ft_strlen(tab);
-	start = 0;
-	end = len - 1;
-	while (end > start)
-	{
-		tmp = tab[start];
-		tab[start] = tab[end];
-		tab[end] = tmp;
-		start++;
-		end--;
-	}
-}
-
-static char	*convert_recursive(unsigned int n, char *digits, size_t index)
-{
-	char	*hex_nbr;
-	char	tmp;
-
-	if (n == 0 && index != 0)
-		return (ft_calloc(index, sizeof(char)));
-	if (n == 0 && index == 0)
-	{
-		hex_nbr = ft_calloc(2, sizeof(char));
-		ft_strlcpy(hex_nbr, "0", 2);
-		return (hex_nbr);
-	}
-	hex_nbr = convert_recursive(n / 16, digits, index + 1);
-	if (!hex_nbr)
-		return (NULL);
-	hex_nbr[index] = digits[n % 16];
-	return (hex_nbr);
-}
-
 static char	*convert(int n, char *digits)
 {
-	char	*result;
+	char			*result;
+	unsigned int	unsigned_n;
+	size_t			result_len;
+	size_t			i;
 
-	result = convert_recursive((unsigned int) n, digits, 0);
+	result_len = 1;
+	i = 0;
+	unsigned_n = (unsigned int) n;
+	while (unsigned_n / 16)
+	{
+		unsigned_n /= 16;
+		result_len++;
+	}
+	result = ft_calloc(result_len + 1, sizeof(char));
 	if (result)
-		reverse_tab(result);
+	{
+		unsigned_n = (unsigned int) n;
+		while (unsigned_n / 16)
+		{
+			result[result_len - 1 - i++] = digits[unsigned_n % 16];
+			unsigned_n /= 16;
+		}
+		result[result_len - 1 - i] = digits[unsigned_n % 16];
+	}
 	return (result);
 }
 
