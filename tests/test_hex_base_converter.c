@@ -9,8 +9,8 @@ MU_TEST(test_simple_convertion) {
 
 	mu_check(!ft_strncmp(converter->convert(5, converter->hex_lower_digits), "5", 1));
 	mu_check(!ft_strncmp(converter->convert(16, converter->hex_lower_digits), "10", 2));
-	mu_check(!ft_strncmp(converter->convert(-1, converter->hex_lower_digits), "ffffffff", 8));
-	mu_check(!ft_strncmp(converter->convert(-1, converter->hex_upper_digits), "FFFFFFFF", 8));
+	mu_check(!ft_strncmp(converter->convert(-1, converter->hex_lower_digits), "ffffffffffffffff", 16));
+	mu_check(!ft_strncmp(converter->convert(-1, converter->hex_upper_digits), "FFFFFFFFFFFFFFFF", 16));
 	mu_check(!ft_strncmp(converter->convert(0, converter->hex_upper_digits), "0", 1));
 	mu_check(!ft_strncmp(converter->convert(16, converter->hex_upper_digits), "10", 2));
 	mu_check(!ft_strncmp(converter->convert('\n', converter->hex_upper_digits), "A", 1));

@@ -12,31 +12,37 @@
 
 #include <ft_printf.h>
 
-static char	*convert(int n, char *digits)
+static size_t	nlen(unsigned long n)
+{
+	size_t	len;
+
+	len = 1;
+	while (n / 16)
+	{
+		n /= 16;
+		len++;
+	}
+	return (len);
+}
+
+static char	*convert(unsigned long n, char *digits)
 {
 	char			*result;
-	unsigned long	unsigned_n;
 	size_t			result_len;
 	size_t			i;
 
 	result_len = 1;
 	i = 0;
-	unsigned_n = (unsigned long) n;
-	while (unsigned_n / 16)
-	{
-		unsigned_n /= 16;
-		result_len++;
-	}
+	result_len = nlen(n);
 	result = ft_calloc(result_len + 1, sizeof(char));
 	if (result)
 	{
-		unsigned_n = (unsigned long) n;
-		while (unsigned_n / 16)
+		while (n / 16)
 		{
-			result[result_len - 1 - i++] = digits[unsigned_n % 16];
-			unsigned_n /= 16;
+			result[result_len - 1 - i++] = digits[n % 16];
+			n /= 16;
 		}
-		result[result_len - 1 - i] = digits[unsigned_n % 16];
+		result[result_len - 1 - i] = digits[n % 16];
 	}
 	return (result);
 }
