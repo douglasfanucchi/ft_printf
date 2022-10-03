@@ -27,9 +27,9 @@ static size_t	nlen(unsigned long n)
 
 static char	*convert(unsigned long n, char *digits)
 {
-	char			*result;
-	size_t			result_len;
-	size_t			i;
+	char	*result;
+	size_t	result_len;
+	size_t	i;
 
 	result_len = 1;
 	i = 0;
