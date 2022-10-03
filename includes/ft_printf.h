@@ -32,5 +32,6 @@ typedef struct s_hex_base_converter {
 
 t_data_format			*get_char_format(void);
 t_data_format			*get_str_format(void);
+t_data_format			*get_hex_lower_format(void);
 t_hex_base_converter	*get_hex_base_converter(void);
 #endif
