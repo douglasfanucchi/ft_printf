@@ -34,9 +34,10 @@ static char	*convert(unsigned long n, char *digits)
 	result_len = 1;
 	i = 0;
 	result_len = nlen(n);
-	result = ft_calloc(result_len + 1, sizeof(char));
+	result = malloc((result_len + 1) * sizeof(char));
 	if (result)
 	{
+		result[result_len] = 0;
 		while (n / 16)
 		{
 			result[result_len - 1 - i++] = digits[n % 16];
