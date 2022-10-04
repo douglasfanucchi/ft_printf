@@ -23,7 +23,7 @@ static char	*formatter(void *data)
 static void	*get_arg(va_list ap)
 {
 	int	*result;
-	
+
 	result = malloc(sizeof(int));
 	if (result)
 		*result = va_arg(ap, int);
