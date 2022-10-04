@@ -14,12 +14,7 @@
 
 static char	*formatter(void *data)
 {
-	return ft_substr(data, 0, 1);
-}
-
-static void	*get_arg(va_list ap)
-{
-	return (ft_strdup("%%"));
+	return ft_strdup("%");
 }
 
 t_data_format	*get_percentage_format(void)
@@ -31,7 +26,7 @@ t_data_format	*get_percentage_format(void)
 	{
 		data_format->id = "%%";
 		data_format->formatter = formatter;
-		data_format->get_arg = get_arg;
+		data_format->get_arg = NULL;
 	}
 	return (data_format);
 }
