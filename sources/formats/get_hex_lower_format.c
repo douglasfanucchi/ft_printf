@@ -25,6 +25,15 @@ static	char*	formatter(void *data)
 	return (result);
 }
 
+void	*get_arg(va_list ap)
+{
+	unsigned long	*result;
+
+	result = malloc(sizeof(unsigned long));
+	*result = va_arg(ap, unsigned long);
+	return (result);
+}
+
 t_data_format	*get_hex_lower_format(void)
 {
 	t_data_format	*data_format;
@@ -34,6 +43,7 @@ t_data_format	*get_hex_lower_format(void)
 	{
 		data_format->id = "%x";
 		data_format->formatter = formatter;
+		data_format->get_arg = get_arg;
 	}
 	return (data_format);
 }

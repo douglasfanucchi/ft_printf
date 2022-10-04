@@ -1,6 +1,22 @@
 #include "../minunit.h"
 #include <ft_printf.h>
 
+static void	func_testing_get_arg_hex_lower(t_data_format *data_format, ...)
+{
+	va_list ap;
+
+	va_start(ap, data_format);
+	int	*nb = data_format->get_arg(ap);
+	mu_check(*nb == 123);
+	va_end(ap);
+}
+
+MU_TEST(testing_get_arg_hex_lower) {
+	t_data_format	*data_format = get_hex_lower_format();
+	func_testing_get_arg_hex_lower(data_format, 123);
+	free(data_format);
+}
+
 MU_TEST(test_formatter) {
 	t_data_format	*data_format = get_hex_lower_format();
 	unsigned long	n;
@@ -21,4 +37,5 @@ MU_TEST(test_formatter) {
 
 MU_TEST_SUITE(test_hex_lower_format) {
 	MU_RUN_TEST(test_formatter);
+	MU_RUN_TEST(testing_get_arg_hex_lower);
 }
