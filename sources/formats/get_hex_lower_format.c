@@ -20,7 +20,8 @@ static	char*	formatter(void *data)
 
 	unsigned_data = data;
 	converter = get_hex_base_converter();
-	result = converter->convert(*unsigned_data, converter->hex_lower_digits);
+	if (converter)
+		result = converter->convert(*unsigned_data, converter->hex_lower_digits);
 	free(converter);
 	return (result);
 }
@@ -30,7 +31,8 @@ void	*get_arg(va_list ap)
 	unsigned long	*result;
 
 	result = malloc(sizeof(unsigned long));
-	*result = va_arg(ap, unsigned long);
+	if (result)
+		*result = va_arg(ap, unsigned long);
 	return (result);
 }
 
