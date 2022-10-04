@@ -6,6 +6,7 @@
 #include "./structures/s_pointer_format.c"
 #include "./structures/s_decimal_format.c"
 #include "./structures/s_integer_format.c"
+#include "./structures/s_u_decimal_format.c"
 #include "./test_hex_base_converter.c"
 
 int	main()
@@ -18,6 +19,7 @@ int	main()
 	MU_RUN_SUITE(test_pointer_format);
 	MU_RUN_SUITE(test_decimal_format);
 	MU_RUN_SUITE(test_integer_format);
+	MU_RUN_SUITE(test_u_decimal_format);
 	MU_REPORT();
 
 	return (0);
