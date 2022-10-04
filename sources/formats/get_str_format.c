@@ -19,7 +19,7 @@ static char	*formatter(void *str)
 
 static void	*get_arg(va_list ap)
 {
-	return (va_arg(ap, char *));
+	return (ft_strdup(va_arg(ap, char *)));
 }
 
 t_data_format	*get_str_format(void)
