@@ -35,5 +35,6 @@ t_data_format			*get_str_format(void);
 t_data_format			*get_hex_lower_format(void);
 t_data_format			*get_hex_upper_format(void);
 t_data_format			*get_pointer_format(void);
+t_data_format			*get_decimal_format(void);
 t_hex_base_converter	*get_hex_base_converter(void);
 #endif

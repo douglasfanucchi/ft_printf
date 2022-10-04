@@ -4,6 +4,7 @@
 #include "./structures/s_hex_lower_format.c"
 #include "./structures/s_hex_upper_format.c"
 #include "./structures/s_pointer_format.c"
+#include "./structures/s_decimal_format.c"
 #include "./test_hex_base_converter.c"
 
 int	main()
@@ -14,6 +15,7 @@ int	main()
 	MU_RUN_SUITE(test_hex_lower_format);
 	MU_RUN_SUITE(test_hex_upper_format);
 	MU_RUN_SUITE(test_pointer_format);
+	MU_RUN_SUITE(test_decimal_format);
 	MU_REPORT();
 
 	return (0);
