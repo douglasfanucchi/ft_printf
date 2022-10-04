@@ -21,8 +21,12 @@ static void	*get_arg(va_list ap)
 {
 	char	*result;
 
-	result = malloc(sizeof(char));
-	*result = (char) va_arg(ap, int);
+	result = malloc(sizeof(char) * 2);
+	if (result)
+	{
+		*result = (char) va_arg(ap, int);
+		*(result + 1) = 0;
+	}
 	return (result);
 }
 
