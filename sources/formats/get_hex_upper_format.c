@@ -19,11 +19,9 @@ static char	*formatter(void *data)
 	char					*result;
 
 	converter = get_hex_base_converter();
+	unsigned_data = data;
 	if(converter)
-	{
-		unsigned_data = data;
 		result = converter->convert(*unsigned_data, converter->hex_upper_digits);
-	}
 	free(converter);
 	return (result);
 }
