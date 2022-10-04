@@ -30,6 +30,8 @@ MU_TEST(test_decimal_formatter) {
 	result = data_format->formatter(&n);
 	mu_check(!ft_strncmp(result, "-2147483648", 10));
 	free(result);
+	
+	free(data_format);
 }
 
 static void	testing_decimal_get_arg(t_data_format *data_format, ...)
