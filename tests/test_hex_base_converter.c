@@ -3,17 +3,38 @@
 
 MU_TEST(test_simple_convertion) {
 	t_hex_base_converter	*converter;
+	char					*result;
 
 	converter = get_hex_base_converter();
 	mu_check(converter != NULL);
 
-	mu_check(!ft_strncmp(converter->convert(5, converter->hex_lower_digits), "5", 1));
-	mu_check(!ft_strncmp(converter->convert(16, converter->hex_lower_digits), "10", 2));
-	mu_check(!ft_strncmp(converter->convert(-1, converter->hex_lower_digits), "ffffffffffffffff", 16));
-	mu_check(!ft_strncmp(converter->convert(-1, converter->hex_upper_digits), "FFFFFFFFFFFFFFFF", 16));
-	mu_check(!ft_strncmp(converter->convert(0, converter->hex_upper_digits), "0", 1));
-	mu_check(!ft_strncmp(converter->convert(16, converter->hex_upper_digits), "10", 2));
-	mu_check(!ft_strncmp(converter->convert('\n', converter->hex_upper_digits), "A", 1));
+	result = converter->convert(5, converter->hex_lower_digits);
+	mu_check(!ft_strncmp(result, "5", 1));
+	free(result);
+
+	result = converter->convert(16, converter->hex_lower_digits);
+	mu_check(!ft_strncmp(result, "10", 2));
+	free(result);
+
+	result = converter->convert(-1, converter->hex_lower_digits);
+	mu_check(!ft_strncmp(result, "ffffffffffffffff", 16));
+	free(result);
+
+	result = converter->convert(-1, converter->hex_upper_digits);
+	mu_check(!ft_strncmp(result, "FFFFFFFFFFFFFFFF", 16));
+	free(result);
+
+	result = converter->convert(0, converter->hex_upper_digits);
+	mu_check(!ft_strncmp(result, "0", 1));
+	free(result);
+
+	result = converter->convert(16, converter->hex_upper_digits);
+	mu_check(!ft_strncmp(result, "10", 2));
+	free(result);
+
+	result = converter->convert('\n', converter->hex_upper_digits);
+	mu_check(!ft_strncmp(result, "A", 1));
+	free(result);
 
 	free(converter);
 }
