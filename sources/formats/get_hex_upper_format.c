@@ -41,7 +41,7 @@ t_data_format	*get_hex_upper_format(void)
 {
 	t_data_format	*data_format;
 
-	data_format = malloc(sizeof(data_format));
+	data_format = malloc(sizeof(t_data_format));
 	if (data_format)
 	{
 		data_format->id = "%X";
