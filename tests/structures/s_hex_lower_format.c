@@ -24,6 +24,7 @@ MU_TEST(test_formatter) {
 	char			*result;
 
 	mu_check(data_format != NULL);
+	mu_check(!ft_strncmp(data_format->id, "%x", 2));
 
 	n = -1;
 	result = data_format->formatter(&n);

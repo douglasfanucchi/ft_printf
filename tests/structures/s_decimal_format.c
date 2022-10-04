@@ -5,7 +5,9 @@
 MU_TEST(test_decimal_formatter) {
 	t_data_format	*data_format = get_decimal_format();
 	mu_check(data_format != NULL);
-	
+
+	mu_check(!ft_strncmp(data_format->id, "%d", 2));
+
 	int n;
 	char *result;
 

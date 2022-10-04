@@ -4,6 +4,7 @@
 MU_TEST(test_pointer_formatter) {
 	t_data_format	*data_format = get_pointer_format();
 	mu_check(data_format != NULL);
+	mu_check(!ft_strncmp(data_format->id, "%p", 2));
 
 	void	*any = malloc(1);
 	mu_check(any != NULL);

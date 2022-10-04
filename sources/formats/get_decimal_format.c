@@ -37,6 +37,7 @@ t_data_format	*get_decimal_format(void)
 	data_format = malloc(sizeof(t_data_format));
 	if (data_format)
 	{
+		data_format->id = "%d";
 		data_format->formatter = formatter;
 		data_format->get_arg = get_arg;
 	}
