@@ -27,10 +27,11 @@ MU_TEST(test_char_formatter) {
 
 	data_format = get_char_format();
 	char *str = "testing";
-	
-	mu_check(!ft_strncmp(data_format->formatter(str), "t", 1));
+	char *result = data_format->formatter(str);
+	mu_check(!ft_strncmp(result, "t", 1));
 
 	free(data_format);
+	free(result);
 }
 
 MU_TEST(test_get_arg) {

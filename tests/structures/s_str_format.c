@@ -17,13 +17,23 @@ static char	*function_to_test_str_get_arg(t_data_format *data_format, ...)
 
 MU_TEST(test_str_formatter) {
 	t_data_format	*data_format;
+	char			*result;
 
 	data_format = get_str_format();
 
 	mu_check(data_format != NULL);
-	mu_check(!ft_strncmp(data_format->formatter("test"), "test", 4));
-	mu_check(data_format->formatter("\0"));
-	mu_check(*(data_format->formatter("\0")) == 0);
+
+	result = data_format->formatter("test");
+	mu_check(!ft_strncmp(result, "test", 4));
+	free(result);
+
+	result = data_format->formatter("\0");
+	mu_check(result);
+	free(result);
+
+	result = data_format->formatter("\0");
+	mu_check(*(result) == 0);
+	free(result);
 
 	free(data_format);
 }
