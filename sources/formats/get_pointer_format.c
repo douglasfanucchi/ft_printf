@@ -22,6 +22,8 @@ static char	*formatter(void *data)
 
 	ptr = data;
 	result = NULL;
+	if (*ptr == NULL)
+		return (ft_strdup("(nil)"));
 	converter = get_hex_base_converter();
 	if (converter)
 	{

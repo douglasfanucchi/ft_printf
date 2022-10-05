@@ -16,6 +16,11 @@ MU_TEST(test_pointer_formatter) {
 	mu_check(!ft_strncmp("0x", result, 2));
 	free(result);
 
+	*any = NULL;
+	result = data_format->formatter(any);
+	mu_check(!ft_strncmp("(nil)", result, 3));
+	free(result);
+
 	free(any);
 	free(data_format);
 }
