@@ -27,7 +27,7 @@ static char	*formatter(void *data)
 	{
 		prefix = ft_strdup("0x");
 		hex = converter->convert(
-				(unsigned long) (*ptr),
+				(unsigned long)(*ptr),
 				converter->hex_lower_digits);
 		result = ft_strjoin(prefix, hex);
 		free(prefix);

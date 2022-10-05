@@ -14,7 +14,7 @@
 
 static char	*formatter(void *data)
 {
-	return ft_strdup("%");
+	return (ft_strdup("%"));
 }
 
 t_data_format	*get_percentage_format(void)
