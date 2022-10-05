@@ -14,7 +14,7 @@
 
 static char	*formatter(void *str)
 {
-	return (str);
+	return (ft_strdup(str));
 }
 
 static void	*get_arg(va_list ap)

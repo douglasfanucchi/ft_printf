@@ -18,14 +18,16 @@ static char	*formatter(void *data)
 	char					*prefix;
 	char					*hex;
 	char					*result;
+	char					**ptr;
 
+	ptr = data;
 	result = NULL;
 	converter = get_hex_base_converter();
 	if (converter)
 	{
 		prefix = ft_strdup("0x");
 		hex = converter->convert(
-				(unsigned long) data,
+				(unsigned long) (*ptr),
 				converter->hex_lower_digits);
 		result = ft_strjoin(prefix, hex);
 		free(prefix);
@@ -37,7 +39,12 @@ static char	*formatter(void *data)
 
 static void	*get_arg(va_list ap)
 {
-	return (va_arg(ap, void *));
+	void	**ptr;
+
+	ptr = malloc(sizeof(void **));
+	if (ptr)
+		*ptr = va_arg(ap, void *);
+	return (ptr);
 }
 
 t_data_format	*get_pointer_format(void)

@@ -10,6 +10,7 @@ static char	*function_to_test_str_get_arg(t_data_format *data_format, ...)
 	va_start(ap, data_format);
 	arg = data_format->get_arg(ap);
 	ft_strlcpy(result, arg, ft_strlen(arg) + 1);
+	free(arg);
 	va_end(ap);
 	return (result);
 }

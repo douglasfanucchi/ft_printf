@@ -6,8 +6,10 @@ MU_TEST(test_pointer_formatter) {
 	mu_check(data_format != NULL);
 	mu_check(!ft_strncmp(data_format->id, "%p", 2));
 
-	void	*any = malloc(1);
+	void	**any = malloc(sizeof(void *));
+
 	mu_check(any != NULL);
+	*any = "douglas fanucchi";
 
 	char	*result = data_format->formatter(any);
 
@@ -18,7 +20,7 @@ MU_TEST(test_pointer_formatter) {
 	free(data_format);
 }
 
-static void*	testing_pointer_get_arg(t_data_format *data_format, ...)
+static void**	testing_pointer_get_arg(t_data_format *data_format, ...)
 {
 	va_list ap;
 	void	*result;
@@ -37,9 +39,10 @@ MU_TEST(test_pointer_get_arg) {
 	mu_check(data_format != NULL);
 	mu_check(any != NULL);
 
-	void	*ptr = testing_pointer_get_arg(data_format, any);
-	mu_check(ptr == any);
+	void	**ptr = testing_pointer_get_arg(data_format, any);
+	mu_check(*ptr == any);
 
+	free(ptr);
 	free(any);
 	free(data_format);
 }
