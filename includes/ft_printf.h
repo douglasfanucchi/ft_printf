@@ -40,4 +40,6 @@ t_data_format			*get_integer_format(void);
 t_data_format			*get_u_decimal_format(void);
 t_data_format			*get_percentage_format(void);
 t_hex_base_converter	*get_hex_base_converter(void);
+t_list					**get_formats_list(void);
+t_data_format			*find_format_list(t_list **list, char *id);
 #endif
