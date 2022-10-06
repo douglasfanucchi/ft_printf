@@ -43,4 +43,5 @@ t_hex_base_converter	*get_hex_base_converter(void);
 t_list					**get_formats_list(void);
 t_data_format			*find_format_from_str_start(t_list **list, char *str);
 void					del_data_formats(void *data_format);
+void					ft_printf(char *str, ...);
 #endif
