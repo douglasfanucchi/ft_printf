@@ -37,6 +37,8 @@ t_data_format	*find_format_from_str_start(t_list **list, char *str)
 	t_list			*node;
 	t_data_format	*data_format;
 
+	if (*str != '%')
+		return (NULL);
 	node = *list;
 	while (node)
 	{
