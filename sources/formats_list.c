@@ -32,7 +32,7 @@ t_list	**get_formats_list(void)
 	return (head);
 }
 
-t_data_format	*find_format_list(t_list **list, char *id)
+t_data_format	*find_format_from_str_start(t_list **list, char *str)
 {
 	t_list			*node;
 	t_data_format	*data_format;
@@ -41,7 +41,7 @@ t_data_format	*find_format_list(t_list **list, char *id)
 	while (node)
 	{
 		data_format = node->content;
-		if (!ft_strncmp(data_format->id, id, ft_strlen(id)))
+		if (!ft_strncmp(data_format->id, str, ft_strlen(data_format->id)))
 			return (data_format);
 		node = node->next;
 	}
