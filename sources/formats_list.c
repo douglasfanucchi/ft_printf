@@ -47,3 +47,8 @@ t_data_format	*find_format_list(t_list **list, char *id)
 	}
 	return (NULL);
 }
+
+void	del_data_formats(void *data_format)
+{
+	free(data_format);
+}
