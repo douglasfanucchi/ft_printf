@@ -15,7 +15,7 @@
 static char	*formatter(void *data)
 {
 	t_hex_base_converter	*converter;
-	unsigned long			*unsigned_data;
+	unsigned int			*unsigned_data;
 	char					*result;
 
 	unsigned_data = data;
@@ -27,13 +27,13 @@ static char	*formatter(void *data)
 	return (result);
 }
 
-void	*get_arg(va_list ap)
+static void	*get_arg(va_list ap)
 {
-	unsigned long	*result;
+	unsigned int	*result;
 
-	result = malloc(sizeof(unsigned long));
+	result = malloc(sizeof(unsigned int));
 	if (result)
-		*result = va_arg(ap, unsigned long);
+		*result = va_arg(ap, unsigned int);
 	return (result);
 }
 

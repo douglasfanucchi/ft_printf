@@ -18,24 +18,34 @@ static char	*formatter(void *data)
 	char					*prefix;
 	char					*hex;
 	char					*result;
-	char					**ptr;
+	unsigned long			*unsigned_data;
 
-	ptr = data;
+	unsigned_data = data;
 	result = NULL;
-	if (*ptr == NULL)
+	if (*unsigned_data == 0)
 		return (ft_strdup("(nil)"));
 	converter = get_hex_base_converter();
 	if (converter)
 	{
 		prefix = ft_strdup("0x");
 		hex = converter->convert(
-				(unsigned long)(*ptr),
+				*unsigned_data,
 				converter->hex_lower_digits);
 		result = ft_strjoin(prefix, hex);
 		free(prefix);
 		free(hex);
 		free(converter);
 	}
+	return (result);
+}
+
+static void	*get_arg(va_list ap)
+{
+	unsigned long	*result;
+
+	result = malloc(sizeof(unsigned long));
+	if (result)
+		*result = va_arg(ap, unsigned long);
 	return (result);
 }
 
@@ -48,6 +58,7 @@ t_data_format	*get_pointer_format(void)
 	{
 		data_format->id = "%p";
 		data_format->formatter = formatter;
+		data_format->get_arg = get_arg;
 	}
 	return (data_format);
 }

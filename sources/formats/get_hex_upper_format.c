@@ -14,7 +14,7 @@
 
 static char	*formatter(void *data)
 {
-	unsigned long			*unsigned_data;
+	unsigned int			*unsigned_data;
 	t_hex_base_converter	*converter;
 	char					*result;
 
