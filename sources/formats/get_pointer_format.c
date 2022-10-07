@@ -39,26 +39,15 @@ static char	*formatter(void *data)
 	return (result);
 }
 
-static void	*get_arg(va_list ap)
-{
-	void	**ptr;
-
-	ptr = malloc(sizeof(void **));
-	if (ptr)
-		*ptr = va_arg(ap, void *);
-	return (ptr);
-}
-
 t_data_format	*get_pointer_format(void)
 {
 	t_data_format	*data_format;
 
-	data_format = malloc(sizeof(t_data_format));
+	data_format = get_hex_lower_format();
 	if (data_format)
 	{
 		data_format->id = "%p";
 		data_format->formatter = formatter;
-		data_format->get_arg = get_arg;
 	}
 	return (data_format);
 }
