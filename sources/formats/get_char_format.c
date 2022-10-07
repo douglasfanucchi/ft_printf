@@ -12,11 +12,6 @@
 
 #include <ft_printf.h>
 
-static char	*formatter(void *s)
-{
-	return (ft_strdup(s));
-}
-
 static void	*get_arg(va_list ap)
 {
 	char	*result;
@@ -30,6 +25,16 @@ static void	*get_arg(va_list ap)
 	return (result);
 }
 
+static size_t	print(t_data_format *data_format, va_list ap)
+{
+	char	*arg;
+
+	arg = data_format->get_arg(ap);
+	write(1, arg, 1);
+	free(arg);
+	return (1);
+}
+
 t_data_format	*get_char_format(void)
 {
 	t_data_format	*data_format;
@@ -38,8 +43,8 @@ t_data_format	*get_char_format(void)
 	if (data_format)
 	{
 		data_format->id = "%c";
-		data_format->formatter = formatter;
 		data_format->get_arg = get_arg;
+		data_format->print = print;
 	}
 	return (data_format);
 }
