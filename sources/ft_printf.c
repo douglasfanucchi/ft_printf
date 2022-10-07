@@ -12,23 +12,6 @@
 
 #include <ft_printf.h>
 
-static size_t	format_and_print(t_data_format *data_format, va_list ap)
-{
-	char	*arg;
-	char	*formatted;
-	size_t	len;
-
-	arg = NULL;
-	if (data_format->get_arg)
-		arg = data_format->get_arg(ap);
-	formatted = data_format->formatter(arg);
-	ft_putstr(formatted);
-	len = ft_strlen(formatted);
-	free(formatted);
-	free(arg);
-	return (len);
-}
-
 size_t	ft_printf(char *str, ...)
 {
 	t_list			**formats;
@@ -44,7 +27,7 @@ size_t	ft_printf(char *str, ...)
 		data_format = find_format_from_str_start(formats, str);
 		if (data_format)
 		{
-			len += format_and_print(data_format, ap);
+			len += data_format->print(data_format, ap);
 			str += ft_strlen(data_format->id);
 			continue ;
 		}
