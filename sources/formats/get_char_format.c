@@ -45,6 +45,7 @@ t_data_format	*get_char_format(void)
 		data_format->id = "%c";
 		data_format->get_arg = get_arg;
 		data_format->print = print;
+		data_format->formatter = NULL;
 	}
 	return (data_format);
 }

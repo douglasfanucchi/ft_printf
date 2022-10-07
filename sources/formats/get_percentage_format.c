@@ -32,6 +32,8 @@ t_data_format	*get_percentage_format(void)
 	{
 		data_format->id = "%%";
 		data_format->print = print;
+		data_format->formatter = NULL;
+		data_format->get_arg = NULL;
 	}
 	return (data_format);
 }
