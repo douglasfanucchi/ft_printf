@@ -12,9 +12,15 @@
 
 #include <ft_printf.h>
 
-static char	*formatter(void *data)
+static size_t	print(t_data_format *data_format, va_list ap)
 {
-	return (ft_strdup("%"));
+	char	c;
+
+	if (!data_format && !ap)
+		return (0);
+	c = '%';
+	write(1, &c, 1);
+	return (1);
 }
 
 t_data_format	*get_percentage_format(void)
@@ -25,8 +31,7 @@ t_data_format	*get_percentage_format(void)
 	if (data_format)
 	{
 		data_format->id = "%%";
-		data_format->formatter = formatter;
-		data_format->get_arg = NULL;
+		data_format->print = print;
 	}
 	return (data_format);
 }
