@@ -18,7 +18,7 @@ static void	*get_arg(va_list ap)
 
 	arg = va_arg(ap, char *);
 	if (!arg)
-		return (NULL);
+		return (ft_strdup("(null)"));
 	return (ft_strdup(arg));
 }
 
