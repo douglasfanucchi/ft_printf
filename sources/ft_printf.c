@@ -34,7 +34,8 @@ size_t	ft_printf(const char *str, ...)
 		write(1, str++, 1);
 		len++;
 	}
-	ft_lstclear(formats, del_data_formats);
+	if (formats)
+		ft_lstclear(formats, del_data_formats);
 	free(formats);
 	va_end(ap);
 	return (len);
