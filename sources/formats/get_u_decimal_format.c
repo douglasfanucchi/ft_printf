@@ -30,6 +30,21 @@ static void	*get_arg(va_list ap)
 	return (result);
 }
 
+static size_t	print(t_data_format *data_format, va_list ap)
+{
+	char	*arg;
+	char	*formatted;
+	size_t	len;
+
+	arg = data_format->get_arg(ap);
+	formatted = data_format->formatter(arg);
+	ft_putstr(formatted);
+	len = ft_strlen(formatted);
+	free(arg);
+	free(formatted);
+	return (len);
+}
+
 t_data_format	*get_u_decimal_format(void)
 {
 	t_data_format	*data_format;
@@ -40,6 +55,7 @@ t_data_format	*get_u_decimal_format(void)
 		data_format->id = "%u";
 		data_format->formatter = formatter;
 		data_format->get_arg = get_arg;
+		data_format->print = print;
 	}
 	return (data_format);
 }
