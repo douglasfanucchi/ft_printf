@@ -12,7 +12,7 @@
 
 #include <ft_printf.h>
 
-size_t	ft_printf(char *str, ...)
+size_t	ft_printf(const char *str, ...)
 {
 	t_list			**formats;
 	t_data_format	*data_format;
