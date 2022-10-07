@@ -28,7 +28,7 @@ MU_TEST(test_formatter) {
 
 	n = -1;
 	result = data_format->formatter(&n);
-	mu_check(!ft_strncmp(result, "ffffffffffffffff", 16));
+	mu_check(!ft_strncmp(result, "ffffffff", 8));
 	free(result);
 
 	n = 10;

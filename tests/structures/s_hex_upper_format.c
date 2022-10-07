@@ -28,7 +28,7 @@ MU_TEST(test_hex_upper_formatter) {
 
 	n = -1;
 	result = data_format->formatter(&n);
-	mu_check(!ft_strncmp(result, "FFFFFFFFFFFFFFFF", 16));
+	mu_check(!ft_strncmp(result, "FFFFFFFF", 8));
 	free(result);
 
 	n = 10;
