@@ -31,7 +31,7 @@ MU_TEST(test_char_formatter) {
 	free(data_format);
 }
 
-MU_TEST(test_get_arg) {
+MU_TEST(test_char_get_arg) {
 	t_data_format	*data_format;
 
 	data_format = get_char_format();
@@ -45,5 +45,5 @@ MU_TEST(test_get_arg) {
 MU_TEST_SUITE(tests_s_char_format) {
 	MU_RUN_TEST(test_get_char_format);
 	MU_RUN_TEST(test_char_formatter);
-	MU_RUN_TEST(test_get_arg);
+	MU_RUN_TEST(test_char_get_arg);
 }
