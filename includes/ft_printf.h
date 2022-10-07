@@ -20,7 +20,7 @@ struct	s_data_format {
 	char	*id;
 	char	*(*formatter)(void *);
 	void	*(*get_arg)(va_list);
-	size_t	(*print)(struct s_data_format *, va_list);
+	size_t	((*print)(struct s_data_format *, va_list));
 };
 
 typedef struct s_data_format	t_data_format;
@@ -42,7 +42,9 @@ t_data_format			*get_u_decimal_format(void);
 t_data_format			*get_percentage_format(void);
 t_hex_base_converter	*get_hex_base_converter(void);
 t_list					**get_formats_list(void);
-t_data_format			*find_format_from_str_start(t_list **list, const char *str);
+t_data_format			*find_format_from_str_start(
+							t_list **list,
+							const char *str);
 void					del_data_formats(void *data_format);
 size_t					ft_printf(const char *str, ...);
 #endif
