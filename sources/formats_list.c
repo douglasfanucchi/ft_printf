@@ -32,7 +32,7 @@ t_list	**get_formats_list(void)
 	return (head);
 }
 
-t_data_format	*find_format_from_str_start(t_list **list, char *str)
+t_data_format	*find_format_from_str_start(t_list **list, const char *str)
 {
 	t_list			*node;
 	t_data_format	*data_format;
