@@ -23,15 +23,12 @@ MU_TEST(test_get_char_format) {
 }
 
 MU_TEST(test_char_formatter) {
-	t_data_format	*data_format;
+	t_data_format	*data_format = get_char_format();
 
-	data_format = get_char_format();
-	char *str = "testing";
-	char *result = data_format->formatter(str);
-	mu_check(!ft_strncmp(result, "t", 1));
+	mu_check(data_format != NULL);
+	mu_check(data_format->formatter == NULL);
 
 	free(data_format);
-	free(result);
 }
 
 MU_TEST(test_get_arg) {

@@ -12,24 +12,10 @@ static char	*function_to_test_str_get_arg(t_data_format *data_format, ...)
 }
 
 MU_TEST(test_str_formatter) {
-	t_data_format	*data_format;
-	char			*result;
-
-	data_format = get_str_format();
+	t_data_format	*data_format = get_str_format();
 
 	mu_check(data_format != NULL);
-
-	result = data_format->formatter("test");
-	mu_check(!ft_strncmp(result, "test", 4));
-	free(result);
-
-	result = data_format->formatter("\0");
-	mu_check(result);
-	free(result);
-
-	result = data_format->formatter("\0");
-	mu_check(*(result) == 0);
-	free(result);
+	mu_check(data_format->formatter == NULL);
 
 	free(data_format);
 }

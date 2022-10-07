@@ -14,13 +14,7 @@ MU_TEST(test_percentage_formatter) {
 	t_data_format	*data_format = get_percentage_format();
 
 	mu_check(data_format != NULL);
-
-	char	*s = "%%";
-	char	*result;
-
-	result = data_format->formatter(s);
-	mu_check(!ft_strncmp(result, "%", 1));
-	free(result);
+	mu_check(data_format->formatter == NULL);
 
 	free(data_format);
 }
