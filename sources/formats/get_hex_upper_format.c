@@ -27,26 +27,15 @@ static char	*formatter(void *data)
 	return (result);
 }
 
-static void	*get_arg(va_list ap)
-{
-	unsigned long	*result;
-
-	result = malloc(sizeof(unsigned long));
-	if (result)
-		*result = va_arg(ap, unsigned long);
-	return (result);
-}
-
 t_data_format	*get_hex_upper_format(void)
 {
 	t_data_format	*data_format;
 
-	data_format = malloc(sizeof(t_data_format));
+	data_format = get_hex_lower_format();
 	if (data_format)
 	{
 		data_format->id = "%X";
 		data_format->formatter = formatter;
-		data_format->get_arg = get_arg;
 	}
 	return (data_format);
 }
