@@ -47,7 +47,8 @@ re: fclean all
 tests: $(TESTS)
 	@./$(TESTS)
 
-$(TESTS): clean_tests $(LIBFT)	@cc -g3 $(FLAGS) $(INCLUDES) sources/*.c sources/**/*.c tests/*.c tests/**/*.c $(LIBFT) -o $(TESTS)
+$(TESTS): clean_tests $(LIBFT)	
+	@cc -g3 $(FLAGS) $(INCLUDES) sources/*.c sources/**/*.c tests/*.c tests/**/*.c $(LIBFT) -o $(TESTS)
 
 clean_tests:
 	@rm -f $(TESTS)
