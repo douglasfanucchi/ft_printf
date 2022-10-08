@@ -18,6 +18,7 @@ static char	*formatter(void *data)
 	unsigned int			*unsigned_data;
 	char					*result;
 
+	result = NULL;
 	unsigned_data = data;
 	converter = get_hex_base_converter();
 	if (converter)
