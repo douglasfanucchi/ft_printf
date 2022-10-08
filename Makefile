@@ -1,19 +1,36 @@
 NAME=libftprintf.a
 TESTS=test.out
+CC=cc
+CC_FLAGS=-Wall -Wextra -Werror
 INCLUDES= -I ./includes -I libft
 LIBFT=./libft/libft.a
-OBJECTS= get_char_format.o \
-		 get_decimal_format.o \
-		 get_hex_lower_format.o \
-		 get_hex_upper_format.o \
-		 get_integer_format.o \
-		 get_percentage_format.o \
-		 get_pointer_format.o \
-		 get_str_format.o \
-		 get_u_decimal_format.o \
-		 ft_printf.o \
-		 hex_base_converter.o \
-		 formats_list.o \
+SOURCES_FORMATS = get_char_format.c \
+		get_decimal_format.c \
+		get_hex_lower_format.c \
+		get_hex_upper_format.c \
+		get_integer_format.c \
+		get_percentage_format.c \
+		get_pointer_format.c \
+		get_str_format.c \
+		get_u_decimal_format.c \
+
+SOURCES = ft_printf.c \
+		hex_base_converter.c \
+		formats_list.c \
+
+OBJECTS = $(SOURCES:.c=.o) $(SOURCES_FORMATS:.c=.o)
+TESTS_SOURCES = tests/main.c \
+				tests/test_find_format_from_str_start.c \
+			    tests/test_hex_base_converter.c \
+				tests/structures/s_char_format.c \
+				tests/structures/s_decimal_format.c \
+				tests/structures/s_hex_lower_format.c \
+				tests/structures/s_hex_upper_format.c \
+				tests/structures/s_integer_format.c \
+				tests/structures/s_percentage_format.c \
+				tests/structures/s_pointer_format.c \
+				tests/structures/s_str_format.c \
+				tests/structures/s_u_decimal_format.c \
 
 all: $(NAME)
 
@@ -27,12 +44,11 @@ $(LIBFT):
 	unzip master.zip
 	rm master.zip
 	mv -f libft-master libft
-	cd libft
 	make -C libft/
 	make bonus -C libft/
 
-$(OBJECTS):
-	cc $(INCLUDES) -Wall -Wextra -Werror -c sources/*.c sources/**/*.c
+$(OBJECTS): $(addprefix sources/, $(SOURCES)) $(addprefix sources/formats/, $(SOURCES_FORMATS))
+	@$(CC) $(INCLUDES) $(CC_FLAGS) -c $(addprefix sources/, $(SOURCES)) $(addprefix sources/formats/, $(SOURCES_FORMATS))
 
 clean:
 	rm -f $(OBJECTS)
@@ -47,8 +63,9 @@ re: fclean all
 tests: $(TESTS)
 	@./$(TESTS)
 
-$(TESTS): clean_tests $(LIBFT)	
-	@cc -g3 $(FLAGS) $(INCLUDES) sources/*.c sources/**/*.c tests/*.c tests/**/*.c $(LIBFT) -o $(TESTS)
+$(TESTS): clean_tests $(LIBFT) $(OBJECTS) $(TESTS_SOURCES)
+	@cc -g3 $(CC_FLAGS) $(INCLUDES) $(OBJECTS) $(TESTS_SOURCES) $(LIBFT) -o $(TESTS)
 
 clean_tests:
+	@rm -f $(OBJECTS)
 	@rm -f $(TESTS)
