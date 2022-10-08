@@ -46,5 +46,5 @@ t_data_format			*find_format_from_str_start(
 							t_list **list,
 							const char *str);
 void					del_data_formats(void *data_format);
-size_t					ft_printf(const char *str, ...);
+int						ft_printf(const char *str, ...);
 #endif

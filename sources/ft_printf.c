@@ -12,16 +12,18 @@
 
 #include <ft_printf.h>
 
-size_t	ft_printf(const char *str, ...)
+int	ft_printf(const char *str, ...)
 {
 	t_list			**formats;
 	t_data_format	*data_format;
 	va_list			ap;
-	size_t			len;
+	int				len;
 
 	len = 0;
 	va_start(ap, str);
 	formats = get_formats_list();
+	if (!formats)
+		return (-1);
 	while (*str)
 	{
 		data_format = find_format_from_str_start(formats, str);
@@ -34,8 +36,7 @@ size_t	ft_printf(const char *str, ...)
 		write(1, str++, 1);
 		len++;
 	}
-	if (formats)
-		ft_lstclear(formats, del_data_formats);
+	ft_lstclear(formats, del_data_formats);
 	free(formats);
 	va_end(ap);
 	return (len);
