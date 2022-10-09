@@ -22,8 +22,6 @@ int	ft_printf(const char *str, ...)
 	len = 0;
 	va_start(ap, str);
 	formats = get_formats_list();
-	if (!formats)
-		return (-1);
 	while (*str)
 	{
 		data_format = find_format_from_str_start(formats, str);
@@ -35,6 +33,8 @@ int	ft_printf(const char *str, ...)
 		}
 		write(1, str++, 1);
 		len++;
+		if (*(str - 1) == '%' && *str == 0)
+			len = -1;
 	}
 	ft_lstclear(formats, del_data_formats);
 	free(formats);

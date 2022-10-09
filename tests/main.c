@@ -10,6 +10,7 @@
 #include "./structures/s_percentage_format.c"
 #include "./test_hex_base_converter.c"
 #include "./test_find_format_from_str_start.c"
+#include "./test_ft_printf.c"
 
 int	main()
 {
@@ -24,6 +25,7 @@ int	main()
 	MU_RUN_SUITE(test_u_decimal_format);
 	MU_RUN_SUITE(test_percentage_format);
 	MU_RUN_SUITE(test_find_format_from_str_start);
+	MU_RUN_SUITE(test_ft_printf);
 	MU_REPORT();
 
 	return (0);
