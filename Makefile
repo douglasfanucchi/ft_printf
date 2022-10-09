@@ -14,6 +14,7 @@ SOURCES_FORMATS = get_char_format.c \
 		get_str_format.c \
 		get_u_decimal_format.c \
 
+
 SOURCES = ft_printf.c \
 		hex_base_converter.c \
 		formats_list.c \
@@ -22,6 +23,7 @@ OBJECTS = $(SOURCES:.c=.o) $(SOURCES_FORMATS:.c=.o)
 TESTS_SOURCES = tests/main.c \
 				tests/test_find_format_from_str_start.c \
 			    tests/test_hex_base_converter.c \
+			    tests/test_ft_printf.c \
 				tests/structures/s_char_format.c \
 				tests/structures/s_decimal_format.c \
 				tests/structures/s_hex_lower_format.c \
@@ -64,7 +66,7 @@ tests: $(TESTS)
 	@./$(TESTS)
 
 $(TESTS): clean_tests $(LIBFT) $(OBJECTS) $(TESTS_SOURCES)
-	@cc -g3 $(CC_FLAGS) $(INCLUDES) $(OBJECTS) $(TESTS_SOURCES) $(LIBFT) -o $(TESTS)
+	@cc -g3 $(INCLUDES) $(OBJECTS) $(TESTS_SOURCES) $(LIBFT) -o $(TESTS)
 
 clean_tests:
 	@rm -f $(OBJECTS)
