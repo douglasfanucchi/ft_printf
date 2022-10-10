@@ -59,6 +59,8 @@ t_data_format	*get_pointer_format(void)
 		data_format->id = "%p";
 		data_format->formatter = formatter;
 		data_format->get_arg = get_arg;
+		ft_lstclear(data_format->flags, free);
+		free(data_format->flags);
 		data_format->flags = NULL;
 	}
 	return (data_format);
