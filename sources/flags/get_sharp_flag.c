@@ -12,7 +12,7 @@
 
 #include <ft_printf.h>
 
-static char	*formatter(char *str, ...)
+static char	*formatter(char *str)
 {
 	if (*str == '0')
 		return (ft_strdup(str));

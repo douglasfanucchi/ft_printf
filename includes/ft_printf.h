@@ -33,7 +33,7 @@ typedef struct s_hex_base_converter {
 
 typedef struct s_flag {
 	char	*type;
-	char	*(*formatter)(char *, ...);
+	char	*(*formatter)(char *);
 }	t_flag;
 
 t_data_format			*get_char_format(void);
