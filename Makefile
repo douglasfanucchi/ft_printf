@@ -24,15 +24,15 @@ TESTS_SOURCES = tests/main.c \
 				tests/test_find_format_from_str_start.c \
 			    tests/test_hex_base_converter.c \
 			    tests/test_ft_printf.c \
-				tests/structures/s_char_format.c \
-				tests/structures/s_decimal_format.c \
-				tests/structures/s_hex_lower_format.c \
-				tests/structures/s_hex_upper_format.c \
-				tests/structures/s_integer_format.c \
-				tests/structures/s_percentage_format.c \
-				tests/structures/s_pointer_format.c \
-				tests/structures/s_str_format.c \
-				tests/structures/s_u_decimal_format.c \
+				tests/formats/s_char_format.c \
+				tests/formats/s_decimal_format.c \
+				tests/formats/s_hex_lower_format.c \
+				tests/formats/s_hex_upper_format.c \
+				tests/formats/s_integer_format.c \
+				tests/formats/s_percentage_format.c \
+				tests/formats/s_pointer_format.c \
+				tests/formats/s_str_format.c \
+				tests/formats/s_u_decimal_format.c \
 
 all: $(NAME)
 
