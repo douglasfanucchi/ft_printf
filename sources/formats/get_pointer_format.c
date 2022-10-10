@@ -21,21 +21,19 @@ static char	*formatter(void *data, t_list **flags)
 	unsigned long			*unsigned_data;
 
 	unsigned_data = data;
-	result = NULL;
 	if (*unsigned_data == 0)
 		return (ft_strdup("(nil)"));
 	converter = get_hex_base_converter();
-	if (converter)
-	{
-		prefix = ft_strdup("0x");
-		hex = converter->convert(
-				*unsigned_data,
-				converter->hex_lower_digits);
-		result = ft_strjoin(prefix, hex);
-		free(prefix);
-		free(hex);
-		free(converter);
-	}
+	if (!converter)
+		return (NULL);
+	prefix = ft_strdup("0x");
+	hex = converter->convert(
+			*unsigned_data,
+			converter->hex_lower_digits);
+	result = ft_strjoin(prefix, hex);
+	free(prefix);
+	free(hex);
+	free(converter);
 	return (result);
 }
 
