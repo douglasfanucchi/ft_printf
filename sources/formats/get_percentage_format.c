@@ -34,6 +34,7 @@ t_data_format	*get_percentage_format(void)
 		data_format->print = print;
 		data_format->formatter = NULL;
 		data_format->get_arg = NULL;
+		data_format->flags = NULL;
 	}
 	return (data_format);
 }
