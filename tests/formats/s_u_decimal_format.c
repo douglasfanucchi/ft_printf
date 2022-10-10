@@ -29,6 +29,26 @@ MU_TEST(test_u_decimal_formatter) {
 	mu_check(!ft_strncmp(result, "0", 1));
 	free(result);
 
+	t_list	*flag_node = ft_lstnew(get_plus_flag());
+	n = -1;
+	result = data_format->formatter(&n, &flag_node);
+	mu_check(!ft_strncmp(result, "+4294967295", 11));
+	ft_lstclear(&flag_node, free);
+	free(result);
+
+	flag_node = ft_lstnew(get_space_flag());
+	result = data_format->formatter(&n, &flag_node);
+	mu_check(!ft_strncmp(result, " 4294967295", 11));
+	ft_lstclear(&flag_node, free);
+	free(result);
+
+	flag_node = ft_lstnew(get_space_flag());
+	ft_lstadd_back(&flag_node, ft_lstnew(get_plus_flag()));
+	result = data_format->formatter(&n, &flag_node);
+	mu_check(!ft_strncmp(result, "+4294967295", 11));
+	ft_lstclear(&flag_node, free);
+	free(result);
+
 	del_data_format(data_format);
 }
 
