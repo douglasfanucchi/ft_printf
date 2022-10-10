@@ -31,6 +31,8 @@ static char	*formatter(void *data, t_list **flags)
 			*unsigned_data,
 			converter->hex_lower_digits);
 	result = ft_strjoin(prefix, hex);
+	if (flags)
+		result = ft_apply_flags(result, flags);
 	free(prefix);
 	free(hex);
 	free(converter);
