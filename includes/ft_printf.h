@@ -31,6 +31,11 @@ typedef struct s_hex_base_converter {
 	char	*(*convert)(unsigned long, char *);
 }	t_hex_base_converter;
 
+typedef struct s_flag {
+	char	*type;
+	char	*(*formatter)(char *, ...);
+}	t_flag;
+
 t_data_format			*get_char_format(void);
 t_data_format			*get_str_format(void);
 t_data_format			*get_hex_lower_format(void);
@@ -47,4 +52,6 @@ t_data_format			*find_format_from_str_start(
 							const char *str);
 void					del_data_formats(void *data_format);
 int						ft_printf(const char *str, ...);
+t_flag					*get_sharp_flag(void);
+t_flag					*get_space_flag(void);
 #endif

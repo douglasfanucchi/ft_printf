@@ -19,6 +19,12 @@ SOURCES = ft_printf.c \
 		hex_base_converter.c \
 		formats_list.c \
 
+BONUS_SOURCES = sources/flags/get_sharp_flag.c \
+				sources/flags/get_space_flag.c \
+
+BONUS_OBJECTS := $(BONUS_SOURCES:sources/flags/%=%)
+BONUS_OBJECTS := $(BONUS_OBJECTS:.c=.o)
+
 OBJECTS = $(SOURCES:.c=.o) $(SOURCES_FORMATS:.c=.o)
 TESTS_SOURCES = tests/main.c \
 				tests/test_find_format_from_str_start.c \
@@ -33,6 +39,8 @@ TESTS_SOURCES = tests/main.c \
 				tests/formats/s_pointer_format.c \
 				tests/formats/s_str_format.c \
 				tests/formats/s_u_decimal_format.c \
+				tests/flags/test_sharp_flag.c \
+				tests/flags/test_space_flag.c \
 
 all: $(NAME)
 
@@ -52,6 +60,8 @@ $(LIBFT):
 $(OBJECTS): $(addprefix sources/, $(SOURCES)) $(addprefix sources/formats/, $(SOURCES_FORMATS))
 	@$(CC) $(INCLUDES) $(CC_FLAGS) -c $(addprefix sources/, $(SOURCES)) $(addprefix sources/formats/, $(SOURCES_FORMATS))
 
+$(BONUS_OBJECTS): $(BONUS_SOURCES)
+	@$(CC) $(INCLUDES) -c $(BONUS_SOURCES)
 clean:
 	rm -f $(OBJECTS)
 	make clean -C libft
@@ -65,8 +75,8 @@ re: fclean all
 tests: $(TESTS)
 	@./$(TESTS)
 
-$(TESTS): clean_tests $(LIBFT) $(OBJECTS) $(TESTS_SOURCES)
-	@cc -g3 $(INCLUDES) $(OBJECTS) $(TESTS_SOURCES) $(LIBFT) -o $(TESTS)
+$(TESTS): clean_tests $(LIBFT) $(OBJECTS) $(BONUS_OBJECTS) $(TESTS_SOURCES)
+	@cc -g3 $(INCLUDES) $(OBJECTS) $(BONUS_OBJECTS) $(TESTS_SOURCES) $(LIBFT) -o $(TESTS)
 
 clean_tests:
 	@rm -f $(OBJECTS)
