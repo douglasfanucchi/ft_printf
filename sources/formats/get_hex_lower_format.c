@@ -18,12 +18,14 @@ static char	*formatter(void *data, t_list **flags)
 	unsigned int			*unsigned_data;
 	char					*result;
 
-	result = NULL;
 	unsigned_data = data;
 	converter = get_hex_base_converter();
-	if (converter)
-		result = converter->convert(*unsigned_data,
-				converter->hex_lower_digits);
+	if (!converter)
+		return (NULL);
+	result = converter->convert(*unsigned_data,
+			converter->hex_lower_digits);
+	if (flags)
+		result = ft_apply_flags(result, flags);
 	free(converter);
 	return (result);
 }

@@ -41,6 +41,13 @@ MU_TEST(test_formatter) {
 	mu_check(!ft_strncmp(result, "10", 1));
 	free(result);
 
+	t_list	*flag_list = ft_lstnew(get_sharp_flag());
+	n = 16;
+	result = data_format->formatter(&n, &flag_list);
+	mu_check(!ft_strncmp(result, "0x10", 4));
+	ft_lstclear(&flag_list, free);
+	free(result);
+
 	del_data_format(data_format);
 }
 
