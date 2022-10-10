@@ -21,6 +21,7 @@ struct	s_data_format {
 	char	*(*formatter)(void *);
 	void	*(*get_arg)(va_list);
 	size_t	((*print)(struct s_data_format *, va_list));
+	t_list	**flags;
 };
 
 typedef struct s_data_format	t_data_format;

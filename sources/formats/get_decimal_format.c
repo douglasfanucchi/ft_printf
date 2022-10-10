@@ -45,6 +45,19 @@ static size_t	print(t_data_format *data_format, va_list ap)
 	return (len);
 }
 
+static t_list	**flags_list(void)
+{
+	t_list	**head;
+
+	head = malloc(sizeof(t_list **));
+	if (head)
+	{
+		*head = ft_lstnew(get_space_flag());
+		ft_lstadd_back(head, ft_lstnew(get_plus_flag()));
+	}
+	return (head);
+}
+
 t_data_format	*get_decimal_format(void)
 {
 	t_data_format	*data_format;
@@ -56,6 +69,7 @@ t_data_format	*get_decimal_format(void)
 		data_format->formatter = formatter;
 		data_format->get_arg = get_arg;
 		data_format->print = print;
+		data_format->flags = flags_list();
 	}
 	return (data_format);
 }
