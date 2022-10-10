@@ -8,7 +8,7 @@ MU_TEST(test_u_decimal_id) {
 	mu_check(data_format != NULL);
 	mu_check(!ft_strncmp(data_format->id, "%u", 2));
 
-	free(data_format);
+	del_data_format(data_format);
 }
 
 MU_TEST(test_u_decimal_formatter) {
@@ -29,7 +29,7 @@ MU_TEST(test_u_decimal_formatter) {
 	mu_check(!ft_strncmp(result, "0", 1));
 	free(result);
 
-	free(data_format);
+	del_data_format(data_format);
 }
 
 static void	testing_u_decimal_get_arg(t_data_format *data_format, ...)
@@ -50,7 +50,7 @@ MU_TEST(test_u_decimal_get_arg) {
 
 	mu_check(data_format != NULL);
 	testing_u_decimal_get_arg(data_format, -1);
-	free(data_format);
+	del_data_format(data_format);
 }
 
 MU_TEST_SUITE(test_u_decimal_format) {

@@ -1,11 +1,6 @@
 #include "minunit.h"
 #include <ft_printf.h>
 
-static void	del_formats(void *data_format)
-{
-	free(data_format);
-}
-
 MU_TEST(test_find_formats) {
 	t_data_format *data_format;
 	t_list	**formats = get_formats_list();
@@ -21,7 +16,7 @@ MU_TEST(test_find_formats) {
 		i++;
 	}
 
-	ft_lstclear(formats, del_formats);
+	ft_lstclear(formats, del_data_format);
 	free(formats);
 }
 

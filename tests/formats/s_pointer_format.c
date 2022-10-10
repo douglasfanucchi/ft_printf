@@ -22,7 +22,7 @@ MU_TEST(test_pointer_formatter) {
 	free(result);
 
 	free(any);
-	free(data_format);
+	del_data_format(data_format);
 }
 
 static void**	testing_pointer_get_arg(t_data_format *data_format, ...)
@@ -49,7 +49,7 @@ MU_TEST(test_pointer_get_arg) {
 
 	free(ptr);
 	free(any);
-	free(data_format);
+	del_data_format(data_format);
 }
 
 MU_TEST_SUITE(test_pointer_format) {

@@ -31,7 +31,7 @@ MU_TEST(test_decimal_formatter) {
 	mu_check(!ft_strncmp(result, "-2147483648", 10));
 	free(result);
 	
-	free(data_format);
+	del_data_format(data_format);
 }
 
 static void	testing_decimal_get_arg(t_data_format *data_format, ...)
@@ -52,7 +52,7 @@ MU_TEST(test_decimal_get_arg) {
 
 	testing_decimal_get_arg(data_format, INT_MAX);
 
-	free(data_format);
+	del_data_format(data_format);
 }
 
 MU_TEST_SUITE(test_decimal_format) {

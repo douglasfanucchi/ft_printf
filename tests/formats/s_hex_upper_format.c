@@ -15,7 +15,7 @@ static void	func_testing_get_arg_hex_upper(t_data_format *data_format, ...)
 MU_TEST(testing_get_arg_hex_upper) {
 	t_data_format	*data_format = get_hex_upper_format();
 	func_testing_get_arg_hex_upper(data_format, 123);
-	free(data_format);
+	del_data_format(data_format);
 }
 
 MU_TEST(test_hex_upper_formatter) {
@@ -41,7 +41,7 @@ MU_TEST(test_hex_upper_formatter) {
 	mu_check(!ft_strncmp(result, "10", 1));
 	free(result);
 
-	free(data_format);
+	del_data_format(data_format);
 }
 
 MU_TEST_SUITE(test_hex_upper_format) {
