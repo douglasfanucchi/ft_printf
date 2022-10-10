@@ -3,6 +3,7 @@
 #include <limits.h>
 
 MU_TEST(test_decimal_formatter) {
+	t_list			*flag_node;
 	t_data_format	*data_format = get_decimal_format();
 	mu_check(data_format != NULL);
 
@@ -30,7 +31,55 @@ MU_TEST(test_decimal_formatter) {
 	result = data_format->formatter(&n, NULL);
 	mu_check(!ft_strncmp(result, "-2147483648", 10));
 	free(result);
-	
+
+	flag_node = ft_lstnew(get_plus_flag());
+	n = INT_MAX;
+	result = data_format->formatter(&n, &flag_node);
+	mu_check(!ft_strncmp(result, "+2147483647", 11));
+	free(flag_node->content);
+	free(flag_node);
+	free(result);
+
+	flag_node = ft_lstnew(get_space_flag());
+	n = INT_MAX;
+	result = data_format->formatter(&n, &flag_node);
+	mu_check(!ft_strncmp(result, " 2147483647", 11));
+	free(flag_node->content);
+	free(flag_node);
+	free(result);
+
+	flag_node = ft_lstnew(get_space_flag());
+	ft_lstadd_back(&flag_node, ft_lstnew(get_plus_flag()));
+	n = INT_MAX;
+	result = data_format->formatter(&n, &flag_node);
+	mu_check(!ft_strncmp(result, "+2147483647", 11));
+	ft_lstclear(&flag_node, free);
+	free(result);
+
+	flag_node = ft_lstnew(get_plus_flag());
+	n = INT_MIN;
+	result = data_format->formatter(&n, &flag_node);
+	mu_check(!ft_strncmp(result, "-2147483648", 10));
+	free(flag_node->content);
+	free(flag_node);
+	free(result);
+
+	flag_node = ft_lstnew(get_space_flag());
+	n = INT_MIN;
+	result = data_format->formatter(&n, &flag_node);
+	mu_check(!ft_strncmp(result, "-2147483648", 10));
+	free(flag_node->content);
+	free(flag_node);
+	free(result);
+
+	flag_node = ft_lstnew(get_space_flag());
+	ft_lstadd_back(&flag_node, ft_lstnew(get_plus_flag()));
+	n = INT_MIN;
+	result = data_format->formatter(&n, &flag_node);
+	mu_check(!ft_strncmp(result, "-2147483648", 10));
+	ft_lstclear(&flag_node, free);
+	free(result);
+
 	del_data_format(data_format);
 }
 
