@@ -36,7 +36,7 @@ int	ft_printf(const char *str, ...)
 		if (*(str - 1) == '%' && *str == 0)
 			len = -1;
 	}
-	ft_lstclear(formats, del_data_formats);
+	ft_lstclear(formats, del_data_format);
 	free(formats);
 	va_end(ap);
 	return (len);

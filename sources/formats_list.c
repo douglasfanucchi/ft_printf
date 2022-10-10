@@ -50,7 +50,16 @@ t_data_format	*find_format_from_str_start(t_list **list, const char *str)
 	return (NULL);
 }
 
-void	del_data_formats(void *data_format)
+void	del_data_format(void *data_format)
 {
+	t_data_format	*format;
+
+	format = data_format;
+	if (format->flags != NULL)
+	{
+		ft_lstclear(format->flags, free);
+		free(format->flags);
+		format->flags = NULL;
+	}
 	free(data_format);
 }

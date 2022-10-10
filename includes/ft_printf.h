@@ -51,7 +51,7 @@ t_list					**get_formats_list(void);
 t_data_format			*find_format_from_str_start(
 							t_list **list,
 							const char *str);
-void					del_data_formats(void *data_format);
+void					del_data_format(void *data_format);
 int						ft_printf(const char *str, ...);
 t_flag					*get_sharp_flag(void);
 t_flag					*get_space_flag(void);
