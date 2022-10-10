@@ -54,4 +54,5 @@ void					del_data_formats(void *data_format);
 int						ft_printf(const char *str, ...);
 t_flag					*get_sharp_flag(void);
 t_flag					*get_space_flag(void);
+t_flag					*get_plus_flag(void);
 #endif

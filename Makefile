@@ -21,6 +21,7 @@ SOURCES = ft_printf.c \
 
 BONUS_SOURCES = sources/flags/get_sharp_flag.c \
 				sources/flags/get_space_flag.c \
+				sources/flags/get_plus_flag.c \
 
 BONUS_OBJECTS := $(BONUS_SOURCES:sources/flags/%=%)
 BONUS_OBJECTS := $(BONUS_OBJECTS:.c=.o)
@@ -41,6 +42,7 @@ TESTS_SOURCES = tests/main.c \
 				tests/formats/s_u_decimal_format.c \
 				tests/flags/test_sharp_flag.c \
 				tests/flags/test_space_flag.c \
+				tests/flags/test_plus_flag.c \
 
 all: $(NAME)
 

@@ -10,6 +10,7 @@
 #include "./formats/s_percentage_format.c"
 #include "./flags/test_sharp_flag.c"
 #include "./flags/test_space_flag.c"
+#include "./flags/test_plus_flag.c"
 #include "./test_hex_base_converter.c"
 #include "./test_find_format_from_str_start.c"
 #include "./test_ft_printf.c"
@@ -30,6 +31,7 @@ int	main()
 	MU_RUN_SUITE(test_ft_printf);
 	MU_RUN_SUITE(test_sharp_flag);
 	MU_RUN_SUITE(test_space_flag);
+	MU_RUN_SUITE(test_plus_flag);
 	MU_REPORT();
 
 	return (0);
