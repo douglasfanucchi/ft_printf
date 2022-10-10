@@ -12,7 +12,7 @@
 
 #include <ft_printf.h>
 
-static char	*formatter(void *data)
+static char	*formatter(void *data, t_list **flags)
 {
 	t_hex_base_converter	*converter;
 	char					*prefix;

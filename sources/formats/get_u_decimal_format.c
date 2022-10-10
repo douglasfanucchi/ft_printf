@@ -12,7 +12,7 @@
 
 #include <ft_printf.h>
 
-static char	*formatter(void *data)
+static char	*formatter(void *data, t_list **flags)
 {
 	unsigned int	*int_data;
 
@@ -37,7 +37,7 @@ static size_t	print(t_data_format *data_format, va_list ap)
 	size_t	len;
 
 	arg = data_format->get_arg(ap);
-	formatted = data_format->formatter(arg);
+	formatted = data_format->formatter(arg, NULL);
 	ft_putstr(formatted);
 	len = ft_strlen(formatted);
 	free(arg);

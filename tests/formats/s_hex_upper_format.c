@@ -27,17 +27,17 @@ MU_TEST(test_hex_upper_formatter) {
 	mu_check(!ft_strncmp(data_format->id, "%X", 2));
 
 	n = -1;
-	result = data_format->formatter(&n);
+	result = data_format->formatter(&n, NULL);
 	mu_check(!ft_strncmp(result, "FFFFFFFF", 8));
 	free(result);
 
 	n = 10;
-	result = data_format->formatter(&n);
+	result = data_format->formatter(&n, NULL);
 	mu_check(!ft_strncmp(result, "A", 1));
 	free(result);
 
 	n = 16;
-	result = data_format->formatter(&n);
+	result = data_format->formatter(&n, NULL);
 	mu_check(!ft_strncmp(result, "10", 1));
 	free(result);
 

@@ -18,7 +18,7 @@
 
 struct	s_data_format {
 	char	*id;
-	char	*(*formatter)(void *);
+	char	*(*formatter)(void *, t_list **);
 	void	*(*get_arg)(va_list);
 	size_t	((*print)(struct s_data_format *, va_list));
 	t_list	**flags;

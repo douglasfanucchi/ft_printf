@@ -20,12 +20,12 @@ MU_TEST(test_u_decimal_formatter) {
 	int		n;
 
 	n = -1;
-	result = data_format->formatter(&n);
+	result = data_format->formatter(&n, NULL);
 	mu_check(!ft_strncmp(result, "4294967295", 10));
 	free(result);
 
 	n = 0;
-	result = data_format->formatter(&n);
+	result = data_format->formatter(&n, NULL);
 	mu_check(!ft_strncmp(result, "0", 1));
 	free(result);
 

@@ -12,22 +12,22 @@ MU_TEST(test_integer_formatter) {
 	char *result;
 
 	n = 101;
-	result = data_format->formatter(&n);
+	result = data_format->formatter(&n, NULL);
 	mu_check(!ft_strncmp(result, "101", 3));
 	free(result);
 
 	n = -1;
-	result = data_format->formatter(&n);
+	result = data_format->formatter(&n, NULL);
 	mu_check(!ft_strncmp(result, "-1", 2));
 	free(result);
 
 	n = INT_MAX;
-	result = data_format->formatter(&n);
+	result = data_format->formatter(&n, NULL);
 	mu_check(!ft_strncmp(result, "2147483647", 10));
 	free(result);
 
 	n = INT_MIN;
-	result = data_format->formatter(&n);
+	result = data_format->formatter(&n, NULL);
 	mu_check(!ft_strncmp(result, "-2147483648", 10));
 	free(result);
 	

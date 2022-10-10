@@ -11,13 +11,13 @@ MU_TEST(test_pointer_formatter) {
 	mu_check(any != NULL);
 	*any = "douglas fanucchi";
 
-	char	*result = data_format->formatter(any);
+	char	*result = data_format->formatter(any, NULL);
 
 	mu_check(!ft_strncmp("0x", result, 2));
 	free(result);
 
 	*any = NULL;
-	result = data_format->formatter(any);
+	result = data_format->formatter(any, NULL);
 	mu_check(!ft_strncmp("(nil)", result, 3));
 	free(result);
 
