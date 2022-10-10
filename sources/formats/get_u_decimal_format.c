@@ -14,26 +14,12 @@
 
 static char	*formatter(void *data, t_list **flags)
 {
-	t_list			*flag_node;
-	t_flag			*flag;
 	unsigned int	*int_data;
-	char			*result;
-	void			*tmp;
 
 	int_data = data;
-	result = ft_litoa(*int_data);
 	if (!flags)
-		return (result);
-	flag_node = *flags;
-	while (flag_node)
-	{
-		flag = flag_node->content;
-		tmp = result;
-		result = flag->formatter(result);
-		free(tmp);
-		flag_node = flag_node->next;
-	}
-	return (result);
+		return (ft_litoa(*int_data));
+	return (ft_apply_flags(ft_litoa(*int_data), flags));
 }
 
 static void	*get_arg(va_list ap)

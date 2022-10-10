@@ -22,6 +22,7 @@ SOURCES = ft_printf.c \
 BONUS_SOURCES = sources/flags/get_sharp_flag.c \
 				sources/flags/get_space_flag.c \
 				sources/flags/get_plus_flag.c \
+				sources/flags/apply_flags.c \
 
 BONUS_OBJECTS := $(BONUS_SOURCES:sources/flags/%=%)
 BONUS_OBJECTS := $(BONUS_OBJECTS:.c=.o)

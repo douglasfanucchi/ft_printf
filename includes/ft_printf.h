@@ -56,4 +56,5 @@ int						ft_printf(const char *str, ...);
 t_flag					*get_sharp_flag(void);
 t_flag					*get_space_flag(void);
 t_flag					*get_plus_flag(void);
+char					*ft_apply_flags(char *str, t_list **flag_list);
 #endif
