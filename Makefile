@@ -1,6 +1,6 @@
 NAME=libftprintf.a
 TESTS=test.out
-CC=cc
+CC=clang
 CC_FLAGS=-Wall -Wextra -Werror
 INCLUDES= -I ./includes -I libft
 LIBFT=./libft/libft.a
@@ -41,11 +41,6 @@ $(NAME): $(LIBFT) $(OBJECTS)
 	ar -rcs $(NAME) $(OBJECTS)
 
 $(LIBFT):
-	rm -rf libft
-	curl -LO https://github.com/douglasfanucchi/libft/archive/refs/heads/master.zip
-	unzip master.zip
-	rm master.zip
-	mv -f libft-master libft
 	make -C libft/
 	make bonus -C libft/
 
@@ -66,7 +61,7 @@ tests: $(TESTS)
 	@./$(TESTS)
 
 $(TESTS): clean_tests $(LIBFT) $(OBJECTS) $(TESTS_SOURCES)
-	@cc -g3 $(INCLUDES) $(OBJECTS) $(TESTS_SOURCES) $(LIBFT) -o $(TESTS)
+	@$(CC) -g3 $(INCLUDES) $(OBJECTS) $(TESTS_SOURCES) $(LIBFT) -o $(TESTS)
 
 clean_tests:
 	@rm -f $(OBJECTS)

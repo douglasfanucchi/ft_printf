@@ -1,6 +1,5 @@
 .vscode
 *.out
-libft/
 libft.a
 test.out*
 ft_printf_tester
