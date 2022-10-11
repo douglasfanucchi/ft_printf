@@ -4,20 +4,23 @@ CC=cc
 CC_FLAGS=-Wall -Werror -Wextra
 INCLUDES= -I ./includes -I libft
 LIBFT=./libft/libft.a
-SOURCES_FORMATS = get_char_format.c \
-		get_decimal_format.c \
-		get_hex_lower_format.c \
-		get_hex_upper_format.c \
-		get_integer_format.c \
-		get_percentage_format.c \
-		get_pointer_format.c \
-		get_str_format.c \
-		get_u_decimal_format.c \
 
+SOURCES = sources/ft_printf.c \
+		sources/hex_base_converter.c \
+		sources/formats_list.c \
+		sources/formats/get_char_format.c \
+		sources/formats/get_decimal_format.c \
+		sources/formats/get_hex_lower_format.c \
+		sources/formats/get_hex_upper_format.c \
+		sources/formats/get_integer_format.c \
+		sources/formats/get_percentage_format.c \
+		sources/formats/get_pointer_format.c \
+		sources/formats/get_str_format.c \
+		sources/formats/get_u_decimal_format.c \
 
-SOURCES = ft_printf.c \
-		hex_base_converter.c \
-		formats_list.c \
+OBJECTS := $(SOURCES:.c=.o) $(SOURCES_FORMATS:.c=.o)
+OBJECTS := $(OBJECTS:sources/%=%)
+OBJECTS := $(OBJECTS:formats/%=%)
 
 BONUS_SOURCES = sources/flags/get_sharp_flag.c \
 				sources/flags/get_space_flag.c \
@@ -27,7 +30,6 @@ BONUS_SOURCES = sources/flags/get_sharp_flag.c \
 BONUS_OBJECTS := $(BONUS_SOURCES:sources/flags/%=%)
 BONUS_OBJECTS := $(BONUS_OBJECTS:.c=.o)
 
-OBJECTS = $(SOURCES:.c=.o) $(SOURCES_FORMATS:.c=.o)
 TESTS_SOURCES = tests/main.c \
 				tests/test_find_format_from_str_start.c \
 			    tests/test_hex_base_converter.c \
@@ -60,8 +62,8 @@ $(LIBFT):
 	make -C libft/
 	make bonus -C libft/
 
-$(OBJECTS): $(addprefix sources/, $(SOURCES)) $(addprefix sources/formats/, $(SOURCES_FORMATS))
-	@$(CC) $(INCLUDES) $(CC_FLAGS) -c $(addprefix sources/, $(SOURCES)) $(addprefix sources/formats/, $(SOURCES_FORMATS))
+$(OBJECTS): $(SOURCES)
+	@$(CC) $(INCLUDES) $(CC_FLAGS) -c $(SOURCES)
 
 $(BONUS_OBJECTS): $(BONUS_SOURCES)
 	@$(CC) $(INCLUDES) -c $(BONUS_SOURCES)
