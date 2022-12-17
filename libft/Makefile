@@ -36,6 +36,7 @@ FUNCS = ft_isalpha \
 		ft_litoa \
 		ft_isspace \
 		ft_putstr \
+		get_next_line \
 
 SRCS = $(addsuffix .c, $(FUNCS))
 OBJECTS = $(addsuffix .o, $(FUNCS))
@@ -51,7 +52,7 @@ BONUS_FUNCS =	ft_lstnew \
 
 BONUS_SRCS = $(addsuffix .c, $(BONUS_FUNCS))
 BONUS_OBJECTS = $(addsuffix .o, $(BONUS_FUNCS))
-CC = clang
+CC = cc
 CCFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
