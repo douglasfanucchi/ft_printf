@@ -34,15 +34,16 @@ TESTS_SOURCES = tests/main.c \
 				tests/formats/s_str_format.c \
 				tests/formats/s_u_decimal_format.c \
 
-all: $(NAME)
+all: | libft
 
 $(NAME): $(LIBFT) $(OBJECTS)
 	cp $(LIBFT) $(NAME)
 	ar -rcs $(NAME) $(OBJECTS)
 
-$(LIBFT):
+libft:
 	make -C libft/
 	make bonus -C libft/
+	make $(NAME)
 
 $(OBJECTS): $(addprefix sources/, $(SOURCES)) $(addprefix sources/formats/, $(SOURCES_FORMATS))
 	@$(CC) $(INCLUDES) $(CC_FLAGS) -c $(addprefix sources/, $(SOURCES)) $(addprefix sources/formats/, $(SOURCES_FORMATS))
@@ -66,3 +67,5 @@ $(TESTS): clean_tests $(LIBFT) $(OBJECTS) $(TESTS_SOURCES)
 clean_tests:
 	@rm -f $(OBJECTS)
 	@rm -f $(TESTS)
+
+.PHONY: libft
